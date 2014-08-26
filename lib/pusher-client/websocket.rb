@@ -89,7 +89,9 @@ module PusherClient
     def close
       @socket.close
     rescue IOError => error
+      logger.fatal error
       logger.debug error.message
+      raise error
     end
 
     private
